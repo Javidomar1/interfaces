@@ -10,6 +10,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -53,12 +54,18 @@ fun PantallaMensajes() {
         horizontalAlignment = Alignment.End
     ) {
         Text(text = "MIS MENSAJES" , color = MaterialTheme.colorScheme.primary, modifier = Modifier.align(Alignment.Start).padding(start = 8.dp, top = 8.dp))
-        LazyColumn(){
+        LazyColumn(
+            modifier = Modifier.fillMaxSize(),
+            contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp),
+            verticalArrangement = Arrangement.spacedBy(12.dp)
+        ){
             item{TarjetaMensaje("Gibu","Haz esto")}
             item{TarjetaMensaje("Javi","Juanito el de los palotes")}
             item{TarjetaMensaje("Javichu","Juanito el de los ojos verdes")}
             item{TarjetaMensaje("Juan","Juanito el de los supermercados")}
             item{TarjetaMensaje("Dominik","Juanito el de los campos")}
+            item{TarjetaMensaje("Gibu","Haz esto")}
+            item{TarjetaMensaje("Javi","Juanito el de los palotes")}
         }
     }
 }
