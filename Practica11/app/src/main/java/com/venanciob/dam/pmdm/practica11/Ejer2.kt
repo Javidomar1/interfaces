@@ -1,5 +1,6 @@
 package com.venanciob.dam.pmdm.practica11
 
+import android.content.res.Configuration
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -15,6 +16,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -25,6 +27,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.focusRestorer
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
@@ -45,13 +48,17 @@ class Ejer2 : ComponentActivity() {
     }
 }
 @Composable
-fun PantallaMensajes(Mensaje: String) {
+fun PantallaMensajes() {
     Column(modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.End
     ) {
-        Text(text = "MIS MENSAJES" , color = MaterialTheme.colorScheme.primary)
+        Text(text = "MIS MENSAJES" , color = MaterialTheme.colorScheme.primary, modifier = Modifier.align(Alignment.Start).padding(start = 8.dp, top = 8.dp))
         LazyColumn(){
-            items(5){TarjetaMensaje(Mensaje)}
+            item{TarjetaMensaje("Gibu","Haz esto")}
+            item{TarjetaMensaje("Javi","Juanito el de los palotes")}
+            item{TarjetaMensaje("Javichu","Juanito el de los ojos verdes")}
+            item{TarjetaMensaje("Juan","Juanito el de los supermercados")}
+            item{TarjetaMensaje("Dominik","Juanito el de los campos")}
         }
     }
 }
@@ -60,26 +67,35 @@ fun PantallaMensajes(Mensaje: String) {
 @Composable
 fun VistaMensajes() {
     Practica11Theme {
-        PantallaMensajes("Esto ya funciona")
+        PantallaMensajes()
     }
 }
 @Composable
-fun TarjetaMensaje(mensaje: String,autor: String) {
-    Row(modifier = Modifier.fillMaxWidth(),
-        horizontalArrangement = Arrangement.Start) {
+fun TarjetaMensaje(autor: String,mensaje: String,) {
+    Spacer(modifier = Modifier.height(20.dp))
+    Row(modifier = Modifier.fillMaxWidth()
+        .border(2.dp, color = Color.Gray, shape = RoundedCornerShape(16.dp)),
+        horizontalArrangement = Arrangement.Start){
         var image = painterResource(R.drawable.ic_launcher_background)
         Image(
             painter = image,
             contentDescription = "Foto"
         )
-        Spacer(modifier = Modifier.height(20.dp))
-    }
-    Column(modifier = Modifier.fillMaxSize().padding(0.dp,20.dp),
-        horizontalAlignment = Alignment.End
+
+    Column(modifier = Modifier
+        .fillMaxSize()
+        .padding(10.dp,20.dp)
+        .border(2.dp, color = Color.Blue, shape = RoundedCornerShape(16.dp)),
+        horizontalAlignment = Alignment.Start
+
     ) {
-        Text(text = autor , color = MaterialTheme.colorScheme.primary)
-        Spacer(modifier = Modifier.height(20.dp))
-        Surface(modifier = Modifier.border(2.dp, color = Color.Blue, shape = RoundedCornerShape(50.dp))){
+        Text(text = autor , color = MaterialTheme.colorScheme.primary, modifier = Modifier.padding(0.dp,10.dp,0.dp))
+        Spacer(modifier = Modifier.height(5.dp))
+        Surface(modifier = Modifier.fillMaxSize()
+            .padding(12.dp),
+            shape = RoundedCornerShape(15.dp),
+            border = BorderStroke(1.4.dp, color = Color.Blue)
+        ){
             Text(
                 text = mensaje,
                 style = MaterialTheme.typography.bodyMedium,
@@ -87,17 +103,5 @@ fun TarjetaMensaje(mensaje: String,autor: String) {
             )
         }
     }
+    }
 }
-
-
-
-
-//Row(modifier = Modifier.fillMaxWidth(),
-//horizontalArrangement = Arrangement.Start) {
-//    var image = painterResource(R.drawable.ic_launcher_background)
-//    Image(
-//        painter = image,
-//        contentDescription = "Foto"
-//    )
-//    Spacer(modifier = Modifier.height(20.dp))
-//}
