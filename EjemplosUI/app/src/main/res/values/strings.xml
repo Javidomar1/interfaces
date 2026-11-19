@@ -1,0 +1,30 @@
+<resources>
+
+
+        <string name="app_name">Pizzería DAM</string>
+        <string name="titulo_pizzeria">Haz tu pedido</string>
+        <string name="hint_nombre">Nombre</string>
+        <string name="etiqueta_tamano">Tamaño</string>
+        <string name="pequena">Pequeña</string>
+        <string name="mediana">Mediana</string>
+        <string name="familiar">Familiar</string>
+        <string name="etiqueta_masa">Masa</string>
+        <string name="etiqueta_extras">Ingredientes extra (1,50 € c/u)</string>
+        <string name="extra_queso">Queso</string>
+        <string name="extra_champinones">Champiñones</string>
+        <string name="extra_jamon">Jamón</string>
+        <string name="cantidad_valor">Cantidad: %1$d</string>
+        <string name="envio_a_domicilio">Envío a domicilio (+3 €)</string>
+        <string name="calcular">Calcular precio</string>
+        <string name="error_nombre">Introduce tu nombre</string>
+        <string name="resumen_pedido">Pedido de %1$s:\n%2$d × pizza %3$s, masa %4$s\nExtras: %5$s\nTotal: %6$.2f €</string>
+        <string name="sin_extras">ninguno</string>
+
+        <string-array name="masas">
+            <item>Fina</item>
+            <item>Clásica</item>
+            <item>Rellena de queso</item>
+        </string-array>
+
+
+</resources>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <!-- Bloque superior: tan ancho como la primera fila -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Primera fila: tres imágenes en horizontal -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/ivPersona1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/desc_persona1"
+                android:src="@drawable/person_02" />
+
+
+            <ImageView
+                android:id="@+id/ivPersona2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/desc_persona2"
+                android:src="@drawable/person_02" />
+
+            <ImageView
+                android:id="@+id/ivAnimal1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/desc_animal1"
+                android:src="@drawable/person_02" />
+
+        </LinearLayout>
+
+        <!-- Alineadas al final del bloque: quedan debajo del perro -->
+        <ImageView
+            android:id="@+id/ivAnimal2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:contentDescription="@string/desc_animal2"
+            android:src="@drawable/animal_02" />
+
+        <ImageView
+            android:id="@+id/ivPersona3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:contentDescription="@string/desc_persona3"
+            android:src="@drawable/person_02" />
+    </LinearLayout>
+
+    <!-- Últimas imágenes: en la raíz, alineadas a la izquierda -->
+    <ImageView
+        android:id="@+id/ivPersona4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/desc_persona4"
+        android:src="@drawable/person_02" />
+
+    <ImageView
+        android:id="@+id/ivPersona5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/desc_persona5"
+        android:src="@drawable/person_02" />
+
+</LinearLayout>
