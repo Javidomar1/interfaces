@@ -10,6 +10,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -31,6 +32,8 @@ import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.filter
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 
@@ -38,14 +41,15 @@ data class Tarea(
     val id: String,
     val titulo: String,
     val descripcion: String,
+    @DrawableRes val imagenRes: Int? = null,
     val activo: Boolean = false
 )
 
-//La lista de las ciudades a Buscar
+// Puedes poner imagen a unas sí y a otras no (o dejarlas en null)
 val tareas = listOf(
-    Tarea("13", "Salamanca","Ciudad de Cultura"),
-    Tarea("14", "Zamora","Ciudad del Queso"),
-    Tarea("15", "Santander","Ciudad de la Musica")
+    Tarea("1", "Salamanca", "Ciudad de Cultura", R.drawable.salamanca),
+    Tarea("2", "Zamora", "Ciudad del Queso", R.drawable.zamora),
+    Tarea("3", "Santander", "Ciudad de la Musica", R.drawable.santander)
 )
 
 class MainActivity : ComponentActivity() {
@@ -131,7 +135,7 @@ fun TarjetaTarea(
         onClick = onClick,
         modifier = Modifier.fillMaxWidth()
     ) {
-        Row(modifier = Modifier.padding(16.dp).fillMaxWidth()) {
+        Row(modifier = Modifier.padding(16.dp,20.dp).fillMaxWidth()) {
             Column(modifier = Modifier.padding(16.dp)) {
                 Text(
                     text = tarea.titulo,
@@ -145,11 +149,16 @@ fun TarjetaTarea(
                     style = MaterialTheme.typography.bodyMedium
                 )
             }
-            Image(
-                imageVector = drawable.
-                contentDescription = null,
-                modifier = Modifier.align(Alignment.CenterVertically)
-            )
+            tarea.imagenRes?.let { res->
+                Image(
+                    painter = painterResource(id = res),
+                    contentDescription = null,
+                    modifier = Modifier.align(Alignment.CenterVertically)
+                            .width(200.dp)
+                        .height(200.dp),
+                    contentScale = ContentScale.Crop
+                )
+            }
         }
     }
 }
