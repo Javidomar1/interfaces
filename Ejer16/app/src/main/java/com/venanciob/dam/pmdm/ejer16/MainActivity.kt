@@ -146,7 +146,7 @@ fun TarjetaTarea(
                 )
             }
             Image(
-                imageVector = Drawable,
+                imageVector = drawable.
                 contentDescription = null,
                 modifier = Modifier.align(Alignment.CenterVertically)
             )
